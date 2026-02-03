@@ -42,13 +42,13 @@ function App() {
 
     // Google Maps Link Formatı: https://www.google.com/maps/dir/Başlangıç/Yer1/Yer2...
     // "My Location" diyerek kullanıcının konumunu başlangıç yapıyoruz.
-    const baseUrl = "https://www.google.com/maps/dir/My+Location/";
+    const baseUrl = "https://www.google.com/maps/dir/";
 
     // Yer isimlerini aralarına "/" koyarak birleştiriyoruz
     const destinationPath = selectedTitles.join("/");
 
-    // Yeni sekmede aç
-    window.open(baseUrl + destinationPath, "_blank");
+    // Sonuç şöyle olacak: https://www.google.com/maps/dir//Kız Kulesi/Galata Kulesi
+    window.open(baseUrl + "/" + destinationPath, "_blank");
   };
 
   // EĞER showWelcome TRUE İSE SADECE KARŞILAMA EKRANINI GÖSTER
