@@ -13,6 +13,9 @@
 
 /* Place.js içindeki en dış div (place-card) */
 .place-card {
+    /* --- EKLENDİ: Tik işaretini konumlandırmak için gerekli --- */
+    position: relative; 
+    
     width: 300px;
     /* Sabit genişlik verebilirsin veya %30 diyebilirsin */
     border: 1px solid #ddd;
@@ -30,7 +33,9 @@
 
     /* Üzerine gelince fare imleci el işareti olsun (tıklanabilir hissi verir) */
     /* Daha önce eklediğimiz 'cursor: pointer;' satırını SİL veya şu satırı ekle: */
-    cursor: default;
+    /* GÜNCELLEME: Artık kart seçilebilir olduğu için pointer yapıyoruz */
+    cursor: pointer; 
+    border: 3px solid transparent; /* Seçildiğinde çerçeve payı */
 }
 
 /* --- YENİ EKLENENLER (Hover/Üzerine Gelme Durumu) --- */
@@ -87,4 +92,91 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     /* Arkasına gölge ekleyip havada duruyor hissi versin */
     cursor: pointer;
+}
+
+/* ============================================================
+   AŞAĞIDAKİLER YENİ ROTA ÖZELLİĞİ İÇİN EKLENDİ 
+   ============================================================ */
+
+/* Seçilen Kartın Görünümü */
+.selected-card {
+    border-color: #1abc9c !important; /* Zorla yeşil yap */
+    background-color: #e8fdf5; /* Arka planı hafif yeşert */
+    transform: scale(0.98);
+}
+
+/* Sağ üstteki Yeşil Tik İşareti */
+.check-mark {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #1abc9c;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Alttaki Yüzen Rota Oluştur Çubuğu */
+.route-bar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2c3e50;
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 1000;
+    animation: slideUp 0.4s ease;
+    width: 90%;
+    max-width: 450px;
+    justify-content: space-between;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.route-info {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-route {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-route:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+@keyframes slideUp {
+    from { bottom: -100px; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
 }
