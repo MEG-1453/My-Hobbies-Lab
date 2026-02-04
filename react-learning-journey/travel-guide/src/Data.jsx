@@ -5,6 +5,8 @@ import Medine from './images/medine.jpg';
 import Mekke from './images/mekke.jpg';
 import Metokati from './images/metokati-kabri.jpg';
 import YerAlti from './images/yer_alti.png'
+import Galata from './images/Galata.jpg'
+import KizKulesi from './images/Kız-kulesi.jpg'
 
 export const places = [
     {
@@ -55,6 +57,20 @@ export const places = [
         description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id consectetur debitis obcaecati assumenda soluta molestias quisquam dicta nemo iste reprehenderit!",
         link: "https://share.google/9SjPB5jgeiKBbLFOp",
         image: Medine
+    },
+    {
+        id: 8,
+        title: "Galata Kulesi",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id consectetur debitis obcaecati assumenda soluta molestias quisquam dicta nemo iste reprehenderit!",
+        link: "https://share.google/81AAZjpW2bjy9Vbrr",
+        image: Galata
+    },
+    {
+        id: 9,
+        title: "Kız Kulesi",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id consectetur debitis obcaecati assumenda soluta molestias quisquam dicta nemo iste reprehenderit!",
+        link: "https://share.google/OzQ3MJTlTy7INbUKs",
+        image: KizKulesi
     }
 
 ];

@@ -4,11 +4,16 @@ import { places } from './Data'
 import Place from './components/Place'
 import './App.css' // CSS dosyanı import etmeyi unutma
 import Welcome from './components/Welcome'
+import Loading from './components/Loading' // YENİ: Loading bileşenini ekledik
 
 function App() {
 
   // Ekran kontrolü için yeni bir state (Değişken)
   const [showWelcome, setShowWelcome] = useState(true);
+  
+  // YENİ: Yükleme ekranını kontrol edecek state
+  const [isLoading, setIsLoading] = useState(false);
+
   // Arama kelimesini tutacak state (değişken)
   const [query, setQuery] = useState("");
   // SEÇİLEN YERLERİ TUTACAK STATE (DİZİ)
@@ -51,9 +56,28 @@ function App() {
     window.open(baseUrl + "/" + destinationPath, "_blank");
   };
 
+  // YENİ: Uygulamayı başlatan ve Loading ekranını devreye sokan fonksiyon
+  const handleStartApp = () => {
+    // 1. Karşılama ekranını kapat
+    setShowWelcome(false);
+    // 2. Yükleme ekranını aç
+    setIsLoading(true);
+
+    // 3. 2 saniye bekle ve yükleme ekranını kapatıp ana ekrana geç
+    setTimeout(() => {
+        setIsLoading(false);
+    }, 2000);
+  };
+
   // EĞER showWelcome TRUE İSE SADECE KARŞILAMA EKRANINI GÖSTER
   if (showWelcome) {
-    return <Welcome onStart={() => setShowWelcome(false)} />
+    // onStart tetiklendiğinde artık handleStartApp çalışacak
+    return <Welcome onStart={handleStartApp} />
+  }
+
+  // YENİ: EĞER isLoading TRUE İSE YÜKLEME EKRANINI GÖSTER
+  if (isLoading) {
+    return <Loading />
   }
 
   return (
