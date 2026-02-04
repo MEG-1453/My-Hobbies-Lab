@@ -1,0 +1,72 @@
+/* Genel Sayfa Fontu ve Arka Planı */
+.app-container {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fcfb; /* Çok hafif grimsi turkuaz zemin */
+    min-height: 100vh;
+    padding-bottom: 100px; /* Rota butonu altını kapatmasın diye boşluk */
+}
+
+/* --- YENİ BİLGİLENDİRME KUTUSU STİLLERİ --- */
+.info-container {
+    padding-top: 110px; /* Header'ın (80px) altından başlaması için boşluk */
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    /* Hafif bir gölge ve kenarlık */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(26, 188, 156, 0.2);
+    
+    animation: fadeInDown 0.8s ease;
+}
+
+.info-box h2 {
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+    font-size: 24px;
+}
+
+.info-box p {
+    color: #7f8c8d;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.info-box b {
+    color: #1abc9c; /* Vurgulu kısımlar turkuaz olsun */
+}
+
+/* Animasyon: Yukarıdan aşağı süzülerek gelme */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobilde Bilgi Kutusunu Biraz Küçültelim */
+@media (max-width: 768px) {
+    .info-container {
+        padding-top: 90px; /* Header küçüldüğü için boşluğu azalt */
+    }
+    
+    .info-box {
+        padding: 20px;
+    }
+    
+    .info-box h2 {
+        font-size: 20px;
+    }
+    
+    .info-box p {
+        font-size: 14px;
+    }
+}

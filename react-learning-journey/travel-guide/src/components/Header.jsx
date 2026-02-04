@@ -5,15 +5,15 @@ function Header({setSearch}) {
     return (
         <div>
             <div className='header'>
-                <div style={{ fontWeight: 'bold' }}>Travel Guide
-                    <span>
-                        &nbsp;&nbsp;(MEG)
-                    </span>
+                <div className="logo-area">
+                    Travel Guide 
+                    <span className="brand-badge">MEG</span>
                 </div>
+                
                 <div className="header-right">
                     <input
                         type="text"
-                        placeholder="Bir yer ara..."
+                        placeholder="Rota ara... 🔍"
                         className="search-input"
                         onChange={(e) => setSearch(e.target.value)} // Her harf girildiğinde çalışır
                     />

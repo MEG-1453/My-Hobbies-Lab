@@ -57,9 +57,20 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app-container">
       {/* Header'a setQuery fonksiyonunu yolluyoruz ki oradan bu state'i güncelleyebilelim */}
       <Header setSearch={setQuery} />
+
+      {/* --- YENİ EKLENEN KISIM: KULLANIM TALİMATI --- */}
+      <div className="info-container">
+        <div className="info-box">
+            <h2>✨ Kendi Rotanı Oluştur</h2>
+            <p>
+                Aşağıdaki listeden gitmek istediğin yerlere tıklayarak seç (✅). 
+                Ardından <b>"Rotayı Oluştur"</b> butonuna basarak Google Maps üzerinde sana özel gezi planını gör!
+            </p>
+        </div>
+      </div>
 
       {/* Container ile sarmaladık */}
       <div className="main-container">

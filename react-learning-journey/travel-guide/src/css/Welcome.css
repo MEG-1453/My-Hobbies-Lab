@@ -1,96 +1,161 @@
-.welcome-container {
+.welcome-wrapper {
     width: 100%;
-    height: 100vh; /* Tüm ekranı kapla */
-    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); /* Hafif turkuaz geçişli arka plan */
+    height: 100vh;
+    background-color: #fdfbf7;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Taşmaları gizle */
+}
+
+.welcome-container {
+    width: 100%;
+    max-width: 1200px;
     padding: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .welcome-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
-    max-width: 1200px;
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Havalı gölge */
-    gap: 50px;
+    gap: 60px;
 }
 
 .welcome-text {
     flex: 1;
+    animation: fadeInUp 1s ease-out;
+}
+
+.welcome-subtitle {
+    color: #1abc9c;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .welcome-text h1 {
-    font-size: 48px;
+    font-size: 56px;
     color: #2c3e50;
-    margin-bottom: 20px;
-    font-family: 'Trebuchet MS', sans-serif;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    font-weight: 700;
 }
 
 .welcome-text p {
     font-size: 18px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 90%;
 }
 
 .btn-start {
-    padding: 15px 40px;
-    font-size: 18px;
+    padding: 18px 45px;
+    font-size: 16px;
     background-color: #2c3e50;
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: bold;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.3);
+}
+
+.btn-start .arrow {
+    transition: transform 0.3s ease;
 }
 
 .btn-start:hover {
     background-color: #1abc9c; /* Turkuaz renk */
-    transform: scale(1.05); /* Hafif büyüme efekti */
-    box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+    transform: translateY(-5px); /* Yukarı kalkma */
+    box-shadow: 0 15px 30px rgba(26, 188, 156, 0.4);
 }
 
-.welcome-image {
+.btn-start:hover .arrow {
+    transform: translateX(5px);
+}
+
+.welcome-image-box {
     flex: 1;
+    position: relative;
     display: flex;
     justify-content: center;
+    animation: fadeInRight 1s ease-out;
 }
 
-.welcome-image img {
+/* Resmin arkasındaki dekoratif daire */
+.welcome-image-box::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: #e0f7fa;
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome-image-box img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transform: rotate(3deg); /* Hafif yamuk duruş, modern görünüm için */
-    transition: transform 0.3s ease;
+    max-width: 450px;
+    border-radius: 30px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.15);
+    /* Hafif yamuk duruş iptal edildi, daha modern ve temiz duruş: */
+    transform: rotate(-3deg); 
+    transition: transform 0.5s ease;
+    border: 5px solid white;
 }
 
-.welcome-image img:hover {
+.welcome-image-box:hover img {
     transform: rotate(0deg) scale(1.02);
 }
 
+/* ANİMASYONLAR */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
 /* MOBİL UYUMLULUK (Responsive) */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .welcome-content {
         flex-direction: column-reverse; /* Mobilde resmi üste, yazıyı alta al */
         text-align: center;
-        padding: 20px;
-        width: 95%;
+        gap: 40px;
     }
 
     .welcome-text h1 {
-        font-size: 32px;
+        font-size: 36px;
     }
     
-    .welcome-image img {
-        margin-bottom: 20px;
-        transform: rotate(0deg);
+    .welcome-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-start {
+        margin: 0 auto;
+    }
+    
+    .welcome-image-box img {
+        max-width: 80%;
+        transform: rotate(0);
     }
 }

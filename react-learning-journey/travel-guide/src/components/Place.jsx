@@ -12,15 +12,28 @@ function Place({ place, isSelected, onToggle }) {
             onClick={onToggle} // Karta tıklayınca seç/kaldır
         >
             {/* EĞER SEÇİLİYSE SAĞ ÜSTTE TİK İŞARETİ GÖSTER */}
-            {isSelected && <div className="check-mark">✅</div>}
+            <div className={`check-mark-container ${isSelected ? 'active' : ''}`}>
+               {isSelected && <div className="check-mark">✓</div>}
+            </div>
 
-            <div>
-                <img src={image} width={275} height={200} alt={title} />
+            <div className="card-image-wrapper">
+                {/* Width ve Height CSS'den gelecek */}
+                <img src={image} alt={title} />
+                <div className="card-overlay"></div>
+            </div>
+
+            <div className="place-content">
                 <h4>{title}</h4>
-                <h5>{description}</h5>
-                {/* Senin orijinal linkin burada duruyor, istersen kaldırabilirsin */}
-                <a href={link} target='_blank' rel="noopener noreferrer"
-                    onClick={(e) => { e.stopPropagation(); }}>Detaylı Bilgi İçin Lütfen Tıklayın.</a>
+                <p className="description">{description}</p>
+                
+                {/* Footer kısmını sabitlemek için */}
+                <div className="card-footer">
+                     {/* Senin orijinal linkin burada duruyor, istersen kaldırabilirsin */}
+                    <a href={link} target='_blank' rel="noopener noreferrer"
+                        onClick={(e) => { e.stopPropagation(); }}>
+                        Detaylı İncele →
+                    </a>
+                </div>
             </div>
         </div>
     )
