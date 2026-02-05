@@ -88,7 +88,7 @@ function App() {
     // 3. 2 saniye bekle ve yükleme ekranını kapatıp ana ekrana geç
     setTimeout(() => {
         setIsLoading(false);
-    }, 2000);
+    }, 4000);
   };
 
   // EĞER showWelcome TRUE İSE SADECE KARŞILAMA EKRANINI GÖSTER
