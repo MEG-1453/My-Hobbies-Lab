@@ -6,6 +6,17 @@ import './App.css' // CSS dosyanı import etmeyi unutma
 import Welcome from './components/Welcome'
 import Loading from './components/Loading' // YENİ: Loading bileşenini ekledik
 
+// Türkçe karakterleri İngilizce karşılıklarına çeviren fonksiyon
+const turkceKarakterleriSil = (text) => {
+  return text
+    .replace(/Ğ/g, "g").replace(/ğ/g, "g")
+    .replace(/Ü/g, "u").replace(/ü/g, "u")
+    .replace(/Ş/g, "s").replace(/ş/g, "s")
+    .replace(/İ/g, "i").replace(/ı/g, "i")
+    .replace(/Ö/g, "o").replace(/ö/g, "o")
+    .replace(/Ç/g, "c").replace(/ç/g, "c");
+};
+
 function App() {
 
   // Ekran kontrolü için yeni bir state (Değişken)
@@ -21,9 +32,20 @@ function App() {
 
   // FİLTRELEME MANTIĞI:
   // Eğer query boşsa hepsini göster, değilse başlığa göre filtrele
-  const filteredPlaces = places.filter((place) =>
-    place.title.toLowerCase().includes(query.toLowerCase())
-  );
+  // const filteredPlaces = places.filter((place) =>
+  //   place.title.toLowerCase().includes(query.toLowerCase())
+  // );
+  // Yeni FİLTRELEME MANTIĞI:
+  const filteredPlaces = places.filter((place) => {
+    // 1. Mekan ismini düzelt (Çamlıca -> camlica)
+    const normalizedTitle = turkceKarakterleriSil(place.title).toLowerCase();
+    
+    // 2. Aranan kelimeyi düzelt (çamlıca -> camlica VEYA camlica -> camlica)
+    const normalizedQuery = turkceKarakterleriSil(query).toLowerCase();
+
+    // 3. Artık ikisi de "ingilizceleştiği" için kıyasla
+    return normalizedTitle.includes(normalizedQuery);
+  });
 
   // KARTA TIKLAYINCA SEÇME/ÇIKARMA FONKSİYONU
   const toggleSelectPlace = (id) => {
